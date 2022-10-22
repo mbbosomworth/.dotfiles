@@ -6,9 +6,6 @@
 (set-fringe-mode 3)
 (menu-bar-mode -1)
 
-;; ESC for quitting prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; Theme
 (load-theme 'tango-dark)
 
@@ -38,7 +35,7 @@
 	 :map ivy-reverse-i-search-map
 	 ("C-k" . ivy-previous-line)
 	 ("C-d" . ivy-reverse-i-search-kill))
-  :init
+  :config
   (ivy-mode 1))
 
 (custom-set-variables
