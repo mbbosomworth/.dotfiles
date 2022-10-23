@@ -27,9 +27,10 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+
 ;; Packages
 (use-package ivy
-  :diminish
+  :ensure t
   :bind (("C-s" . swiper)
 	 :map ivy-minibuffer-map
 	 ("C-l" . ivy-alt-done)
@@ -41,12 +42,33 @@
   :init
   (ivy-mode 1))
 
+(use-package swiper
+  :ensure t
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)))
+
+(use-package avy
+  :ensure t
+  :bind ("M-s" . avy-goto-char))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(ivy use-package)))
+ '(package-selected-packages
+   '(which-key rainbow-delimiters doom-modeline avy swiper ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
